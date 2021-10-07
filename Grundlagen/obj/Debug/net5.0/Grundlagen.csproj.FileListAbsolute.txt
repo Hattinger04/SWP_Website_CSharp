@@ -1,0 +1,16 @@
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\Grundlagen.exe
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\Grundlagen.deps.json
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\Grundlagen.runtimeconfig.json
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\Grundlagen.runtimeconfig.dev.json
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\Grundlagen.dll
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\ref\Grundlagen.dll
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\bin\Debug\net5.0\Grundlagen.pdb
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.csproj.AssemblyReference.cache
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.AssemblyInfoInputs.cache
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.AssemblyInfo.cs
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.csproj.CoreCompileInputs.cache
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.dll
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\ref\Grundlagen.dll
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.pdb
+C:\Users\s8gre\source\repos\Grundlagen\Grundlagen\obj\Debug\net5.0\Grundlagen.genruntimeconfig.cache
