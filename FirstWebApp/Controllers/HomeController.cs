@@ -4,11 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+// Allgemeine Sachen wie home, Impressum, über uns, ...
 namespace FirstWebApp.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Impressum()
         {
             return View();
         }
