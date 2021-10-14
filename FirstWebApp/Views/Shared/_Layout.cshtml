@@ -8,9 +8,30 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    
-            @RenderBody()
 
+    <div id="container">
+        <header>
+            Kopfbereich
+        </header>
+        <main>
+            <nav>
+                Navigation
+            </nav>
+            <content>
+                @*hier wird die zugehörige View angezeigt*@
+                @RenderBody()
+            </content>
+
+            <aside>
+                Seitenbereich
+            </aside>
+        </main>
+        <footer>
+            Fußbereich
+        </footer>
+    </div>
+
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
