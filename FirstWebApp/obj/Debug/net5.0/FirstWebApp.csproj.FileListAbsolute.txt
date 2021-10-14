@@ -407,3 +407,5 @@ C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\
 C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Shop\Basket.cshtml.g.cs
 C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Shared\Navigation.cshtml.g.cs
 C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Shop\Index.cshtml.g.cs
+C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Shared\Footer.cshtml.g.cs
