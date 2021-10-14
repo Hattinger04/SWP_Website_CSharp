@@ -401,3 +401,7 @@ C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\bin\Debug\net5.0\runtimes\win
 C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Home\AboutUs.cshtml.g.cs
 C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Home\Impressum.cshtml.g.cs
+C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\User\Registration.cshtml.g.cs
+C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Shop\Shop.cshtml.g.cs
+C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\obj\Debug\net5.0\Razor\Views\Shop\Basket.cshtml.g.cs

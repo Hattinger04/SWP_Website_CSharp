@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace FirstWebApp.Controllers
 {
-    public class UserController : Controller
+    public class ShopController : Controller
     {
-        public IActionResult Registration()
+        public IActionResult Shop()
         {
             return View();
         }
-
-        public IActionResult Login()
+        public IActionResult Basket()
         {
             return View();
         }
