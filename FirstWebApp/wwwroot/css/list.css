@@ -1,6 +1,6 @@
 ﻿table {
     margin: 25px 0;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-family: sans-serif;
     min-width: 400px;   
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -10,11 +10,13 @@ thead {
 }
 
 td {
-    padding: 10px; 
+    padding: 10px;
 }
 
 tbody {
     border-bottom: 1px solid #dddddd;
+    border-left: 1px solid #979191;
+    border-right: 1px solid #979191;
 }
 tfoot {
     font-size: 80%;
