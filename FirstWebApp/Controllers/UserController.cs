@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FirstWebApp.Models; 
 
 namespace FirstWebApp.Controllers
 {
@@ -12,6 +13,13 @@ namespace FirstWebApp.Controllers
 
         public IActionResult Index()
         {
+            User user = new User()
+            {
+                UserID = 100,
+                Username = "Simon",
+                Password = "Simon"
+            }; 
+
             return View();
         }
         public IActionResult Registration()
