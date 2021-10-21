@@ -1,11 +1,33 @@
-﻿
+﻿@* 
+    model ... gibt den Datentyp an, der an die View übergeben wird
+*@
+
+@model FirstWebApp.Models.User
+
 @{
     ViewData["Title"] = "Index";
+
 }
 
 <h3>Index</h3>
 
-<p>
-    Userverwaltung - Login, Registration, ...
-</p>
+<div>
 
+    @* 
+        Model ... Instanz/ Objekt das an die View übergeben wurde
+                    hier sind die Daten enthalten
+    *@
+
+    @if(Model != null){
+        <p>
+            @Model.UserID<br />
+            @Model.Username<br />   
+            @Model.Password<br />
+        </p>
+    } else {
+        <p>
+            Keine Userdaten vorhanden
+        </p>
+    }
+    
+</div>

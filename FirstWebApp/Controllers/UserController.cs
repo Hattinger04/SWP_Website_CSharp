@@ -9,9 +9,7 @@ namespace FirstWebApp.Controllers
 {
     public class UserController : Controller
     {
-
-
-        public IActionResult Index()
+    public IActionResult Index()
         {
             User user = new User()
             {
@@ -19,8 +17,8 @@ namespace FirstWebApp.Controllers
                 Username = "Simon",
                 Password = "Simon"
             }; 
-
-            return View();
+            // Daten des Users an die View übergeben
+            return View(user);
         }
         public IActionResult Registration()
         {
