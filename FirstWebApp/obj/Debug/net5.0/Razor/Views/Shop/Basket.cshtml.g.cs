@@ -19,8 +19,15 @@ using FirstWebApp;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\s8gre\source\repos\Grundlagen\FirstWebApp\Views\_ViewImports.cshtml"
+using FirstWebApp.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c42dbf96f9c6c6fdbfb6725bab87e5b1b26a1bb6", @"/Views/Shop/Basket.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7fc1a0b76c8f2efc669dd491635ed73649a67b76", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f0aab4a04b943c8dcbe6141628e2ec3b7816526d", @"/Views/_ViewImports.cshtml")]
     public class Views_Shop_Basket : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
