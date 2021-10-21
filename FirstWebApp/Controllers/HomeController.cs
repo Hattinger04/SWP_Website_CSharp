@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FirstWebApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,22 @@ namespace FirstWebApp.Controllers
 
         public IActionResult AboutUs()
         {
-            return View();
+            return View(getMitarbeiterFromDB());
         }
 
         public IActionResult Impressum()
         {
             return View();
+        }
+
+        private List<Mitarbeiter> getMitarbeiterFromDB()
+        {
+            return new List<Mitarbeiter>()
+            {
+                new Mitarbeiter(){MitarbeiterID = 0, Firstname = "Simon", Lastname = "Greiderer", Gehalt = 7000},
+                new Mitarbeiter(){MitarbeiterID = 1, Firstname = "Guido", Lastname = "Kurz", Gehalt = 1500 },
+                new Mitarbeiter(){MitarbeiterID = 2, Firstname = "Julius", Lastname = "Greil", Gehalt = 3000}
+            }; 
         }
     }
 }

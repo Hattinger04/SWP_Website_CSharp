@@ -1,10 +1,42 @@
-﻿
+﻿@model List<FirstWebApp.Models.Mitarbeiter>
+
 @{
     ViewData["Title"] = "AboutUs";
 }
 
 <h1>AboutUs</h1>
 
-
-<p>Über uns</p>
+@if (Model.Count >= 1 && Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <td>MitarbeiterID</td>
+                <td>Vorname</td>
+                <td>Nachname</td>
+                <td>Gehalt</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Mitarbeiter m in Model)
+            {
+                <tr>
+                    <td>@m.MitarbeiterID</td>
+                    <td>@m.Firstname</td>
+                    <td>@m.Lastname</td>
+                    <td>@m.Gehalt</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Unsere Mitarbeiter</td>
+            </tr>
+        </tfoot>
+    </table>
+} else {
+    <p>
+        Zurzeit befinden sich keine Mitarbeiter im Unternehmen
+    </p>
+}
 
