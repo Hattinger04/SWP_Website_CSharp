@@ -37,7 +37,7 @@ namespace FirstWebApp.Controllers
             if (ModelState.IsValid)
             {
                 // TODO: DB
-                return RedirectToAction("index", "home");
+                return View("_Message", new Message("Registrierung", "Ihre Daten wurden erfolgreich abgespeichert"));
             }
             ValidateRegistrationData(userDataFromForm); 
             return View();
