@@ -34,12 +34,12 @@ namespace FirstWebApp.Controllers
                 return RedirectToAction("Registration");
             }
             // Falls Formular richtig ausgeführt wurde
+            ValidateRegistrationData(userDataFromForm);
             if (ModelState.IsValid)
             {
                 // TODO: DB
                 return View("_Message", new Message("Registrierung", "Ihre Daten wurden erfolgreich abgespeichert"));
             }
-            ValidateRegistrationData(userDataFromForm); 
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace FirstWebApp.Controllers
             {
                 return; 
             }
-            if(user.Username == null || (user.Username.Trim().Length <0))
+            if(user.Username == null || (user.Username.Trim().Length < 4))
             {
                 ModelState.AddModelError("Username", "Der Benutzername muss mind. 4 Zeichen lang sein!"); 
             }
