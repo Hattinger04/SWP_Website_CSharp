@@ -23,14 +23,48 @@ namespace FirstWebApp.Controllers
 
         [HttpGet]
         public IActionResult Registration()
-        {
+        {   
             return View();
         }
         [HttpPost]
         public IActionResult Registration(User userDataFromForm)
         {
+            if(userDataFromForm == null)
+            {
+                return RedirectToAction("Registration");
+            }
+            // Falls Formular richtig ausgeführt wurde
+            if (ModelState.IsValid)
+            {
+                // TODO: DB
+                return RedirectToAction("index", "home");
+            }
+            ValidateRegistrationData(userDataFromForm); 
             return View();
         }
+
+        private void ValidateRegistrationData(User user)
+        {
+            if (user == null)
+            {
+                return; 
+            }
+            if(user.Username == null || (user.Username.Trim().Length <0))
+            {
+                ModelState.AddModelError("Username", "Der Benutzername muss mind. 4 Zeichen lang sein!"); 
+            }
+            if (user.Password == null || (user.Password.Length < 8))
+            {
+                ModelState.AddModelError("Password", "Das Passwort muss mind. 8 Zeichen lang sein!");
+            }
+            
+            if(user.Birthdate >= DateTime.Now)
+            {
+                ModelState.AddModelError("Birthdate", "Geboren in der Zukunft?!");
+            }
+             
+        }
+
         public IActionResult Login()
         {
             return View();
