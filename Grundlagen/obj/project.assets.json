@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\s8gre\\source\\repos\\Grundlagen\\Grundlagen\\Grundlagen.csproj",
+      "projectUniqueName": "C:\\Users\\s8gre\\Documents\\Simon\\HTL\\4BHWII\\SWP\\C\\animewebsite\\SWP_Website_CSharp\\Grundlagen\\Grundlagen.csproj",
       "projectName": "Grundlagen",
-      "projectPath": "C:\\Users\\s8gre\\source\\repos\\Grundlagen\\Grundlagen\\Grundlagen.csproj",
+      "projectPath": "C:\\Users\\s8gre\\Documents\\Simon\\HTL\\4BHWII\\SWP\\C\\animewebsite\\SWP_Website_CSharp\\Grundlagen\\Grundlagen.csproj",
       "packagesPath": "C:\\Users\\s8gre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\s8gre\\source\\repos\\Grundlagen\\Grundlagen\\obj\\",
+      "outputPath": "C:\\Users\\s8gre\\Documents\\Simon\\HTL\\4BHWII\\SWP\\C\\animewebsite\\SWP_Website_CSharp\\Grundlagen\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",

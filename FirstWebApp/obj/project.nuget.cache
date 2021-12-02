@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GjmMmSEqlgvfBvEvhQ8NpJW9BzL2jzljNPF9hmKvMplxvcAKvltrJHa5eJxmIxiCQrcYxEfgFY7Xz15G2S2tjw==",
+  "dgSpecHash": "5zN0ltkAp+8mfeF5ojGqSd2aFJizXlCgdPxC91E4K6Bu43oxewGeRdQkAuNc7tvwqOTROZoBARzoBdVGw7nmNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\s8gre\\source\\repos\\Grundlagen\\FirstWebApp\\FirstWebApp.csproj",
+  "projectFilePath": "C:\\Users\\s8gre\\Documents\\Simon\\HTL\\4BHWII\\SWP\\C\\animewebsite\\SWP_Website_CSharp\\FirstWebApp\\FirstWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\s8gre\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\s8gre\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
