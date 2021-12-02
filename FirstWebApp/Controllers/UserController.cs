@@ -20,11 +20,17 @@ namespace FirstWebApp.Controllers
             // Daten des Users an die View übergeben
             return View(user);
         }
+
+        [HttpGet]
         public IActionResult Registration()
         {
             return View();
         }
-
+        [HttpPost]
+        public IActionResult Registration(User userDataFromForm)
+        {
+            return View();
+        }
         public IActionResult Login()
         {
             return View();

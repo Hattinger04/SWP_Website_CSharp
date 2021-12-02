@@ -22,5 +22,6 @@ namespace FirstWebApp.Models
         public string Password { get; set; }
         public string Email { get; set;  }
         public DateTime Birthdate { get; set;  }
+        public Gender Gender { get; set; }
     }
 }
