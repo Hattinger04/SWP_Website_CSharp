@@ -3,12 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FirstWebApp.Models; 
+using FirstWebApp.Models;
+using FirstWebApp.Models.DB;
+using System.Data.Common;
 
 namespace FirstWebApp.Controllers
 {
     public class UserController : Controller
     {
+
+    private IRepositoryUsers repo = new RepositoryUsersDB(); 
+
     public IActionResult Index()
         {
             User user = new User()
@@ -37,8 +42,19 @@ namespace FirstWebApp.Controllers
             ValidateRegistrationData(userDataFromForm);
             if (ModelState.IsValid)
             {
-                // TODO: DB
-                return View("_Message", new Message("Registrierung", "Ihre Daten wurden erfolgreich abgespeichert"));
+                try {
+                    repo.Connect(); 
+                    if(repo.Insert(userDataFromForm)) {
+                        return View("_Message", new Message("Registrierung", "Ihre Daten wurden erfolgreich abgespeichert"));
+                    } else {
+                        return View("_Message", new Message("Registrierung", "Ihre Daten NICHT wurden erfolgreich abgespeichert", "Bitte versuchen sie es später erneut!"));
+                    }
+                } catch(DbException ex) {
+                    return View("_Message", new Message("Registrierung", "Datenbankfehler!" + ex.Message, "Bitte versuchen sie es später erneut!"));
+                } finally {
+                    repo.Disconnect(); 
+                }
+                
             }
             return View();
         }
