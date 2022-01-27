@@ -11,6 +11,7 @@ namespace FirstWebApp.Models.DB {
 
         private string connectionsString = "Server=localhost;database=testwebsite;user=root";
         private DbConnection connection;
+        
         public void Connect() {
             if (this.connection == null) {
                 this.connection = new MySqlConnection(this.connectionsString);
@@ -30,13 +31,42 @@ namespace FirstWebApp.Models.DB {
         }
 
         public bool Delete(int user_id) {
-            throw new NotImplementedException();
+            if(this.connection?.State == System.Data.ConnectionState.Open) {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = "delete from users where user_id = @user_id";
+                DbParameter paramID = cmd.CreateParameter();
+                paramID.ParameterName = "user_id";
+                paramID.DbType = System.Data.DbType.Int32;
+                paramID.Value = user_id;
+                cmd.Parameters.Add(paramID);
+                return cmd.ExecuteNonQuery() == 1; 
+            }
+            return false; 
         }
 
         public List<User> GetAllUsers() {
-            throw new NotImplementedException();
+            List<User> users = new List<User>(); 
+            if(this.connection?.State == System.Data.ConnectionState.Open) {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = "select * from users";
+                using (DbDataReader reader = cmd.ExecuteReader()) {
+                    while(reader.Read()) {
+                        users.Add(new User() {
+                            UserID = Convert.ToInt32(reader["user_id"]),
+                            Username = Convert.ToString(reader["username"]),
+                            Password = Convert.ToString(reader["password"]),
+                            Birthdate = Convert.ToDateTime(reader["birthdate"]),
+                            Email = Convert.ToString(reader["email"]),
+                            Gender = (Gender)Convert.ToInt32(reader["gender"])
+                        });   
+                    }
+                }
+            }
+            return users; 
         }
-
+        public User GetUser() {
+            return null; 
+        }
         public bool Insert(User user) {
             if (this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();

@@ -1,8 +1,8 @@
-﻿@* 
+﻿@*
     model ... gibt den Datentyp an, der an die View übergeben wird
 *@
 
-@model FirstWebApp.Models.User
+@model List<FirstWebApp.Models.User>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,21 +13,49 @@
 
 <div>
 
-    @* 
+    @*
         Model ... Instanz/ Objekt das an die View übergeben wurde
                     hier sind die Daten enthalten
     *@
 
-    @if(Model != null){
-        <p>
-            @Model.UserID<br />
-            @Model.Username<br />   
-            @Model.Password<br />
-        </p>
-    } else {
+    @if (Model == null || Model.Count < 1) {
         <p>
             Keine Userdaten vorhanden
         </p>
+
+    } else {
+
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="5">User</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>UserID</td>
+                    <td>Username</td>
+                    <td>Birthdate</td>
+                    <td>Email</td>
+                    <td>Gender</td>
+                </tr>
+                @foreach (User user in Model) {
+                    <tr>
+                        <td>@user.UserID</td>
+                        <td>@user.Username</td>
+                        <td>@user.Birthdate.ToLongDateString()</td>
+                        <td>@user.Email</td>
+                        <td>@user.Gender</td>
+                    </tr>
+                }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="5">zur Aufbereitung der User</td>
+                </tr>
+            </tfoot>
+        </table>
     }
-    
+
 </div>

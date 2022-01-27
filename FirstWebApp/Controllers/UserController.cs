@@ -16,14 +16,14 @@ namespace FirstWebApp.Controllers
 
     public IActionResult Index()
         {
-            User user = new User()
-            {
-                UserID = 100,
-                Username = "Simon",
-                Password = "Simon"
-            }; 
-            // Daten des Users an die View übergeben
-            return View(user);
+            try {
+                repo.Connect();
+                return View(repo.GetAllUsers());
+            } catch(DbException) {
+                return View("_Message", new Message("Datenbankfehler!", "Die Benutzer konnten nicht geladen werden! Versuchen sie es später erneut.")); 
+            } finally {
+                repo.Disconnect(); 
+            }
         }
 
         [HttpGet]
