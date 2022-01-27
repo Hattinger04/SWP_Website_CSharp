@@ -38,15 +38,27 @@
                     <td>Birthdate</td>
                     <td>Email</td>
                     <td>Gender</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 @foreach (User user in Model) {
-                    <tr>
-                        <td>@user.UserID</td>
-                        <td>@user.Username</td>
-                        <td>@user.Birthdate.ToLongDateString()</td>
-                        <td>@user.Email</td>
-                        <td>@user.Gender</td>
-                    </tr>
+            <tr>
+                <td>@user.UserID</td>
+                <td>@user.Username</td>
+                <td>@user.Birthdate.ToLongDateString()</td>
+                <td>@user.Email</td>
+                <td>@user.Gender</td>
+                <td>
+                    <form action="/user/delete/@user.UserID" method="get">
+                        <input type="submit" value="Löschen" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/user/update/@user.UserID" method="get">
+                        <input type="submit" value="Ändern" />
+                    </form>
+                </td>
+            </tr>
                 }
             </tbody>
 
@@ -57,5 +69,4 @@
             </tfoot>
         </table>
     }
-
 </div>

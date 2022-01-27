@@ -79,9 +79,11 @@ namespace FirstWebApp.Models.DB {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "delete from users where user_id = @user_id";
                 DbParameter paramID = cmd.CreateParameter();
+               
                 paramID.ParameterName = "user_id";
                 paramID.DbType = System.Data.DbType.Int32;
                 paramID.Value = user_id;
+                
                 cmd.Parameters.Add(paramID);
                 return cmd.ExecuteNonQuery() == 1; 
             }

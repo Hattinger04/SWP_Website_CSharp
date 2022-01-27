@@ -85,5 +85,24 @@ namespace FirstWebApp.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id) {
+            try {
+                repo.Connect();
+                repo.Delete(id);
+                return RedirectToAction("Index"); 
+            } catch (DbException) {
+                return View("_Message", new Message("Datenbankfehler!", "Der Benutzer konnte nicht gelöscht werden! Versuchen sie es später erneut."));
+            } finally {
+                repo.Disconnect();
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Update(int id) {
+            // TODO: User mit der ID id ändern
+            return View();
+        }
     }
 }
