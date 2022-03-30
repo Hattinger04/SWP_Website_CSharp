@@ -12,17 +12,17 @@ namespace FirstWebApp.Models.DB {
         private string connectionsString = "Server=localhost;database=testwebsite;user=root";
         private DbConnection connection;
         
-        public void Connect() {
+        public async Task ConnectAsync() {
             if (this.connection == null) {
                 this.connection = new MySqlConnection(this.connectionsString);
             }
             if (this.connection.State != System.Data.ConnectionState.Open) {
-                this.connection.Open();
+               await this.connection.OpenAsync();
             }
         }
-        public void Disconnect() {
+        public async Task DisconnectAsync() {
             if (this.connection != null && this.connection.State == System.Data.ConnectionState.Open) {
-                this.connection.Close();
+                await this.connection.CloseAsync();
             }
         }
 
@@ -90,13 +90,13 @@ namespace FirstWebApp.Models.DB {
             return false; 
         }
 
-        public List<User> GetAllUsers() {
+        public async Task<List<User>> GetAllUsers() {
             List<User> users = new List<User>(); 
             if(this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "select * from users";
-                using (DbDataReader reader = cmd.ExecuteReader()) {
-                    while(reader.Read()) {
+                using (DbDataReader reader = await cmd.ExecuteReaderAsync()) {
+                    while(await reader.ReadAsync()) {
                         users.Add(new User() {
                             UserID = Convert.ToInt32(reader["user_id"]),
                             Username = Convert.ToString(reader["username"]),
