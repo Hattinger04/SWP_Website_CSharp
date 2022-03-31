@@ -26,7 +26,7 @@ namespace FirstWebApp.Models.DB {
             }
         }
 
-        public bool ChangeUserData(int userID, User user) {
+        public async Task<bool> ChangeUserData(int userID, User user) {
             if (this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "update users set username = @username, password = sha2(@password, 512), " +
@@ -69,12 +69,12 @@ namespace FirstWebApp.Models.DB {
                 cmd.Parameters.Add(paramGender);
                 cmd.Parameters.Add(paramID);
 
-                return cmd.ExecuteNonQuery() == 1;
+                return await cmd.ExecuteNonQueryAsync() == 1;
             }
             return false; 
         }
 
-        public bool Delete(int user_id) {
+        public async Task<bool> Delete(int user_id) {
             if(this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "delete from users where user_id = @user_id";
@@ -85,7 +85,7 @@ namespace FirstWebApp.Models.DB {
                 paramID.Value = user_id;
                 
                 cmd.Parameters.Add(paramID);
-                return cmd.ExecuteNonQuery() == 1; 
+                return await cmd.ExecuteNonQueryAsync() == 1; 
             }
             return false; 
         }
@@ -110,11 +110,20 @@ namespace FirstWebApp.Models.DB {
             }
             return users; 
         }
-        public User GetUser(int user_id) {
+        public async Task<User> GetUser(int user_id) {
             if (this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "select * from users where user_id = @user_id";
-                using (DbDataReader reader = cmd.ExecuteReader()) {
+                
+                DbParameter paramID = cmd.CreateParameter();
+                paramID.ParameterName = "user_id";
+                paramID.DbType = System.Data.DbType.String;
+                paramID.Value = user_id;
+
+                cmd.Parameters.Add(paramID);
+
+
+                using (DbDataReader reader = await cmd.ExecuteReaderAsync()) {
                     if(reader.Read()) {
                         return new User() {
                             UserID = user_id,
@@ -129,7 +138,7 @@ namespace FirstWebApp.Models.DB {
             }
             return new User(); 
         }
-        public bool Insert(User user) {
+        public async Task<bool> Insert(User user) {
             if (this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "insert into users values(null, @username, sha2(@password, 512), @email, @birthdate, @gender)";
@@ -164,13 +173,43 @@ namespace FirstWebApp.Models.DB {
                 cmd.Parameters.Add(paramBD);
                 cmd.Parameters.Add(paramGender);
 
-                return cmd.ExecuteNonQuery() == 1; 
+                return await cmd.ExecuteNonQueryAsync() == 1; 
             }
             return false;
         }
 
-        public User Login(string username, string password) {
-            throw new NotImplementedException();
+        public async Task<User> Login(string username, string password) {
+            if (this.connection?.State == System.Data.ConnectionState.Open) {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = "select * from users where username = @username and password = sha2(@password, 512)";
+                
+                DbParameter paramUN = cmd.CreateParameter();
+                paramUN.ParameterName = "username";
+                paramUN.DbType = System.Data.DbType.String;
+                paramUN.Value = username;
+
+                DbParameter paramPW = cmd.CreateParameter();
+                paramPW.ParameterName = "password";
+                paramPW.DbType = System.Data.DbType.String;
+                paramPW.Value = password;
+
+                cmd.Parameters.Add(paramUN);
+                cmd.Parameters.Add(paramPW);
+
+                using (DbDataReader reader = await cmd.ExecuteReaderAsync()) {
+                    if (reader.Read()) {
+                        return new User() {
+                            UserID = Convert.ToInt32(reader["user_id"]),
+                            Username = Convert.ToString(reader["username"]),
+                            Password = Convert.ToString(reader["password"]),
+                            Birthdate = Convert.ToDateTime(reader["birthdate"]),
+                            Email = Convert.ToString(reader["email"]),
+                            Gender = (Gender)Convert.ToInt32(reader["gender"])
+                        };
+                    }
+                }
+            }
+            return null;
         }
     }
 }

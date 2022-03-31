@@ -28,15 +28,15 @@ namespace FirstWebApp.Controllers {
             return View();
         }
         [HttpPost]
-        public IActionResult Registration(User userDataFromForm) {
+        public async Task<IActionResult> Registration(User userDataFromForm) {
             if (userDataFromForm == null) {
                 return RedirectToAction("Registration");
             }
             ValidateRegistrationData(userDataFromForm);
             if (ModelState.IsValid) {
                 try {
-                    repo.ConnectAsync();
-                    if (repo.Insert(userDataFromForm)) {
+                    await repo.ConnectAsync();
+                    if (repo.Insert(userDataFromForm).Result) {
                         return View("_Message", new Message("Registrierung", "Ihre Daten wurden erfolgreich abgespeichert"));
                     } else {
                         return View("_Message", new Message("Registrierung", "Ihre Daten NICHT wurden erfolgreich abgespeichert", "Bitte versuchen sie es später erneut!"));
@@ -44,13 +44,12 @@ namespace FirstWebApp.Controllers {
                 } catch (DbException ex) {
                     return View("_Message", new Message("Registrierung", "Datenbankfehler!" + ex.Message, "Bitte versuchen sie es später erneut!"));
                 } finally {
-                    repo.DisconnectAsync();
+                    await repo.DisconnectAsync();
                 }
 
             }
             return View(userDataFromForm);
         }
-
         private void ValidateRegistrationData(User user) {
             if (user == null) {
                 return;
@@ -67,27 +66,52 @@ namespace FirstWebApp.Controllers {
             }
 
         }
-
+        [HttpGet]
         public IActionResult Login() {
             return View();
         }
-
-        [HttpGet]
-        public IActionResult Delete(int id) {
+        [HttpPost]
+        public async Task<IActionResult> Login(User userDataFromForm) {
+            if (userDataFromForm == null) {
+                return RedirectToAction("Login");
+            }
             try {
-                repo.ConnectAsync();
-                repo.Delete(id);
+                await repo.ConnectAsync();
+                if (await repo.Login(userDataFromForm.Username, userDataFromForm.Password) != null) {
+                    return View("_Message", new Message("Login", "User " + userDataFromForm.Username + " erfolgreich angemeldet!"));
+                } else {
+                    return View("_Message", new Message("Login", "Ihr Username oder Password war falsch", "Bitte überprüfen sie ihre Daten!"));
+                }
+            } catch (DbException ex) {
+                return View("_Message", new Message("Registrierung", "Datenbankfehler! " + ex.Message, "Bitte versuchen sie es später erneut!"));
+            } finally {
+                await repo.DisconnectAsync();      
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id) {
+            try {
+                await repo.ConnectAsync();
+                await repo.Delete(id);
                 return RedirectToAction("Index");
             } catch (DbException) {
                 return View("_Message", new Message("Datenbankfehler!", "Der Benutzer konnte nicht gelöscht werden! Versuchen sie es später erneut."));
             } finally {
-                repo.DisconnectAsync();
+                await repo.DisconnectAsync();
             }
         }
+        // Wird so natürlich nicht funktionieren 
         [HttpGet]
-        public IActionResult Update(int id) {
-            // TODO: User mit der ID id ändern
-            return View();
+        public async Task<IActionResult> Update(User user, int id) {
+            try {
+                await repo.ConnectAsync();
+                await repo.ChangeUserData(id, user);
+                return RedirectToAction("Index");
+            } catch (DbException) {
+                return View("_Message", new Message("Datenbankfehler!", "Der Benutzer konnte nicht geändert werden! Versuchen sie es später erneut."));
+            } finally {
+                await repo.DisconnectAsync();
+            }
         }
     }
 }

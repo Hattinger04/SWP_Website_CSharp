@@ -11,11 +11,11 @@ namespace FirstWebApp.Models.DB {
     public interface IRepositoryUsers {
         Task ConnectAsync();
         Task DisconnectAsync();
-        bool Insert(User user);
-        bool Delete(int user_id);
-        bool ChangeUserData(int userID, User newUserData);
+        Task<bool> Insert(User user);
+        Task<bool> Delete(int user_id);
+        Task<bool> ChangeUserData(int userID, User newUserData);
         Task<List<User>> GetAllUsers();
-        User Login(String username, String password);
+        Task<User> Login(String username, String password);
         
         // weitere Methoden
     }
