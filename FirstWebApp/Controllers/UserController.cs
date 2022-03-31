@@ -100,8 +100,13 @@ namespace FirstWebApp.Controllers {
                 await repo.DisconnectAsync();
             }
         }
-        // Wird so natürlich nicht funktionieren 
         [HttpGet]
+        public IActionResult Update() {
+            return View();
+        }
+
+        // Wird so natürlich nicht funktionieren 
+        [HttpPost]
         public async Task<IActionResult> Update(User user, int id) {
             try {
                 await repo.ConnectAsync();
