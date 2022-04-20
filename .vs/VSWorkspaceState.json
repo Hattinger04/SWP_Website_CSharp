@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Grundlagen"
+    "\\FirstWebApp",
+    "\\FirstWebApp\\Models",
+    "\\FirstWebApp\\Models\\DB"
   ],
-  "SelectedNode": "\\Grundlagen\\Program.cs",
+  "SelectedNode": "\\FirstWebApp\\Models\\User.cs",
   "PreviewInSolutionExplorer": false
 }

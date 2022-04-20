@@ -57,9 +57,9 @@ namespace FirstWebApp.Models.DB {
                 paramGender.Value = user.Gender;
 
                 DbParameter paramID = cmd.CreateParameter();
-                paramGender.ParameterName = "user_id";
-                paramGender.DbType = System.Data.DbType.Int32;
-                paramGender.Value = user.UserID;
+                paramID.ParameterName = "user_id";
+                paramID.DbType = System.Data.DbType.Int32;
+                paramID.Value = user.UserID;
 
 
                 cmd.Parameters.Add(paramUN);
