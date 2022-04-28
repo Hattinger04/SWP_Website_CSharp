@@ -138,6 +138,27 @@ namespace FirstWebApp.Models.DB {
             }
             return new User(); 
         }
+
+        public async Task<bool> IsEmailExisting(string email) {
+            if (this.connection?.State == System.Data.ConnectionState.Open) {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = "select * from users where email = @email";
+
+                DbParameter paramID = cmd.CreateParameter();
+                paramID.ParameterName = "email";
+                paramID.DbType = System.Data.DbType.String;
+                paramID.Value = email;
+
+                cmd.Parameters.Add(paramID);
+
+                using (DbDataReader reader = await cmd.ExecuteReaderAsync()) {
+                    if (reader.Read()) {
+                        return true;    
+                    }
+                }
+            }
+            return false; 
+        }
         public async Task<bool> Insert(User user) {
             if (this.connection?.State == System.Data.ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();

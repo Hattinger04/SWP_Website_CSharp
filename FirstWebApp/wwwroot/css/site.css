@@ -12,8 +12,8 @@ header{
     height: 200px; 
     border-bottom: 1px solid #979191; 
 }
-main {
-
+.redBorder {
+    border-color:red;
 }
 nav {
     width: 15%;

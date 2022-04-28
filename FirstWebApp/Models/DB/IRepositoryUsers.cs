@@ -16,7 +16,8 @@ namespace FirstWebApp.Models.DB {
         Task<bool> ChangeUserData(int userID, User newUserData);
         Task<List<User>> GetAllUsers();
         Task<User> Login(String username, String password);
-        
+        Task<bool> IsEmailExisting(String email);
+        Task<User> GetUser(int id); 
         // weitere Methoden
     }
 }

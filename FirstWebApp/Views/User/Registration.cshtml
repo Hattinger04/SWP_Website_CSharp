@@ -6,9 +6,9 @@
 
 <h1>Registration</h1>
 
-<form asp-controller="user" asp-action="registration" method="post">
+<form id="formReg" asp-controller="user" asp-action="registration" method="post">
     <p>
-        <label> Benutzername </label><br/>
+        <label> Benutzername </label><br />
         <input type="text" asp-for="Username" />
         <span asp-validation-for="Username"></span>
     </p>
@@ -21,6 +21,7 @@
         <label> Email </label><br />
         <input type="email" asp-for="Email" />
         <span asp-validation-for="Email"></span>
+        <span id="eMailMessage" style="visibility:hidden; color:red; font-size:0.8em;font-weight:bold"> E-Mail existiert bereits</span>
     </p>
     <p>
         <label> Birthdate </label><br />
@@ -35,10 +36,17 @@
             <option value="2" selected>nicht angegeben</option>
         </select>
         <span asp-validation-for="Gender"></span>
-<p>
+    <p>
         <input type="submit" value="absenden" />
         <input type="reset" value="abbrechen" />
     </p>
 
     </p>
 </form>
+
+<button id="btnToggle">
+    Ein-/Ausschalten
+</button>
+@section Scripts {
+    <script src="~/js/registration.js" asp-append-version="true"></script>
+}

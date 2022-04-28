@@ -105,6 +105,21 @@ namespace FirstWebApp.Controllers {
             return View();
         }
 
+        // email muss gleich lauten wie in js - ajax request - data
+        [HttpGet]
+        public async Task<IActionResult> CheckEmail(string email) {
+            try {
+                await repo.ConnectAsync();
+                Console.WriteLine("Emails:" + await repo.IsEmailExisting(email)); 
+                return new JsonResult(await repo.IsEmailExisting(email)); 
+            } catch(DbException) {
+                
+            } finally {
+                await repo.DisconnectAsync(); 
+            }
+            return new JsonResult(false);
+        }
+
         // Wird so natürlich nicht funktionieren 
         [HttpPost]
         public async Task<IActionResult> Update(User user, int id) {
